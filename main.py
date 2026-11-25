@@ -34,6 +34,10 @@ def main():
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(MONOLOGUE + "\n")
+    # Read back and verify the deliverable on disk is exactly 100 words.
+    with open(path, "r", encoding="utf-8") as f:
+        written = f.read().strip()
+    assert len(written.split()) == WORD_COUNT, "entry.txt word count mismatch"
     print(MONOLOGUE)
 
 
